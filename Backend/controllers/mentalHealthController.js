@@ -298,7 +298,8 @@ const getModuleProgress = async(req, res) => {
     try {
         const profile = await Profile.findOne({ user: req.user.id });
 
-        const progress = profile?.moduleProgress || {};
+        // Replace optional chaining with traditional conditional check
+        const progress = (profile && profile.moduleProgress) ? profile.moduleProgress : {};
 
         res.json({
             success: true,
