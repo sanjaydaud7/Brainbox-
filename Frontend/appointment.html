@@ -1,0 +1,3077 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brainbox - Book Your Mental Health Appointment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+         :root {
+            /* Healthcare Color Palette */
+            --primary-blue: #1e40af;
+            --primary-light: #3b82f6;
+            --secondary-green: #059669;
+            --accent-orange: #ea580c;
+            --success-green: #16a34a;
+            --warning-yellow: #eab308;
+            --error-red: #dc2626;
+            /* Neutral Colors */
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            /* Gradients */
+            --hero-gradient: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            --card-gradient: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            --feature-gradient: linear-gradient(135deg, #059669 0%, #16a34a 100%);
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            /* Index.html navbar variables */
+            --primary-color: #4073c0;
+            --secondary-color: #6b8eba;
+            --accent-color: #5e60ce;
+            --light-color: #f8f9fa;
+            --dark-color: #001835;
+            --success-color: #4ca154;
+            --text-color: #333333;
+            --background-color: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        button {
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        /* Button Styles from index.html */
+        
+        .btn-primary,
+        .btn-secondary {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            outline: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-primary:hover {
+            background-color: #3a5a8c;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        /* Header Styles from index.html */
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+            margin-bottom: 30px;
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 20px;
+            width: auto;
+            max-width: none;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-color);
+        }
+        
+        .logo i {
+            font-size: 24px;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        /* Mood Tracker Button Styles */
+        
+        .mood-tracker-btn {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            outline: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: var(--shadow);
+        }
+        
+        .mood-tracker-btn:hover {
+            background-color: #4a4cb7;
+        }
+        
+        .mood-tracker-btn i {
+            font-size: 16px;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark-color);
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+        /* User Profile Dropdown Styles */
+        
+        .user-profile-dropdown {
+            position: relative;
+        }
+        
+        .profile-trigger {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+        
+        .avatar-circle {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            font-size: 16px;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            min-width: 200px;
+            display: none;
+            z-index: 10;
+        }
+        
+        .dropdown-menu.active {
+            display: block;
+        }
+        
+        .dropdown-item {
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+        
+        .dropdown-item:hover {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+        
+        .dropdown-divider {
+            height: 1px;
+            background-color: #eee;
+            margin: 5px 0;
+        }
+        /* Hero Section */
+        
+        .hero-section {
+            padding: 120px 0 80px;
+            background: var(--hero-gradient);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.1;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-text h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+        
+        .hero-text .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .hero-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .feature-item i {
+            width: 32px;
+            height: 32px;
+            background: var(--secondary-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        
+        .hero-cta {
+            background: var(--white);
+            color: var(--primary-blue);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-xl);
+            text-align: center;
+            color: var(--gray-800);
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        .hero-card i {
+            font-size: 4rem;
+            color: var(--secondary-green);
+            margin-bottom: 1rem;
+        }
+        
+        .hero-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-blue);
+        }
+        /* Stats Section */
+        
+        .stats-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+        
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .stat-card {
+            background: var(--card-gradient);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--feature-gradient);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--feature-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+        /* Booking Section */
+        
+        .booking-section {
+            padding: 80px 0;
+            background: var(--gray-50);
+        }
+        
+        .appointment-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .booking-flow {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        /* Specialist Section */
+        
+        .specialist-section {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-200);
+        }
+        
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--gray-200);
+            background: var(--white);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: var(--gray-700);
+            font-size: 0.9rem;
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+        
+        .filter-btn.active {
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: var(--white);
+        }
+        
+        .specialists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+        
+        .specialists-grid::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .specialists-grid::-webkit-scrollbar-track {
+            background: var(--gray-100);
+            border-radius: 3px;
+        }
+        
+        .specialists-grid::-webkit-scrollbar-thumb {
+            background: var(--primary-blue);
+            border-radius: 3px;
+        }
+        
+        .specialist-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--gray-200);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .specialist-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+        
+        .specialist-card.selected {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+        
+        .specialist-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--feature-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .specialist-info h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--gray-800);
+        }
+        
+        .specialist-role {
+            color: var(--primary-blue);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .specialist-specialty {
+            background: var(--secondary-green);
+            color: var(--white);
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .specialist-bio {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .specialist-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 0.75rem 0.5rem;
+            background: var(--gray-50);
+            border-radius: 8px;
+        }
+        
+        .stat-number {
+            font-weight: 700;
+            color: var(--primary-blue);
+            font-size: 0.9rem;
+        }
+        
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 0.25rem;
+        }
+        
+        .availability-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--success-green);
+            color: var(--white);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        /* Booking Sidebar */
+        
+        .booking-sidebar {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-200);
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+        
+        .booking-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .booking-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .booking-subtitle {
+            color: var(--gray-500);
+            font-size: 0.9rem;
+        }
+        
+        .selected-specialist {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+        
+        .selected-specialist.show {
+            display: block;
+        }
+        
+        .selected-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .selected-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--feature-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            margin-right: 0.75rem;
+            font-size: 0.9rem;
+        }
+        
+        .selected-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--gray-800);
+            font-size: 0.95rem;
+        }
+        
+        .selected-role {
+            color: var(--primary-blue);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--gray-700);
+            font-size: 0.9rem;
+        }
+        
+        .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+        
+        .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+        
+        .time-slots-container {
+            margin-bottom: 1.5rem;
+        }
+        
+        .time-slots-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--gray-700);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+        
+        .time-slot {
+            padding: 0.75rem 0.5rem;
+            border: 1px solid var(--gray-300);
+            background: var(--white);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        
+        .time-slot:hover:not(:disabled) {
+            border-color: var(--primary-blue);
+            background: var(--gray-50);
+        }
+        
+        .time-slot.available {
+            border-color: var(--success-green);
+            color: var(--success-green);
+        }
+        
+        .time-slot.selected {
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: var(--white);
+        }
+        
+        .time-slot.booked {
+            background: var(--gray-100);
+            border-color: var(--gray-300);
+            color: var(--gray-500);
+            cursor: not-allowed;
+        }
+        
+        .booking-summary {
+            background: var(--gray-50);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .summary-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--gray-800);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--gray-200);
+            font-size: 0.9rem;
+        }
+        
+        .summary-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--primary-blue);
+        }
+        
+        .summary-value {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+        
+        .book-btn {
+            width: 100%;
+            background: var(--hero-gradient);
+            color: var(--white);
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .book-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .book-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background: var(--gray-400);
+        }
+        /* Modal */
+        
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .modal-content {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .modal-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+        
+        .close-modal {
+            background: var(--gray-100);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: var(--gray-500);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            background: var(--gray-200);
+            color: var(--gray-700);
+        }
+        
+        .confirmation-card {
+            background: var(--feature-gradient);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .success-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--secondary-green);
+            font-size: 1.5rem;
+        }
+        
+        .confirmation-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .confirmation-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .detail-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .detail-icon {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .detail-value {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .detail-label {
+            font-size: 0.7rem;
+            opacity: 0.8;
+            margin-top: 0.25rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+        
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 8px;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 80px;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+        
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+        
+        .terms-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--gray-50);
+            border-radius: 8px;
+        }
+        
+        .terms-checkbox {
+            width: 16px;
+            height: 16px;
+            margin-top: 0.1rem;
+            accent-color: var(--primary-blue);
+        }
+        
+        .terms-text {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            line-height: 1.4;
+        }
+        
+        .terms-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .terms-link:hover {
+            text-decoration: underline;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            background: var(--hero-gradient);
+            color: var(--white);
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        /* Success Confirmation Modal */
+        
+        .success-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            backdrop-filter: blur(5px);
+        }
+        
+        .success-modal-content {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+            text-align: center;
+            position: relative;
+            animation: successModalFadeIn 0.6s ease forwards;
+        }
+        
+        .success-modal-header {
+            margin-bottom: 2rem;
+        }
+        
+        .success-checkmark {
+            width: 80px;
+            height: 80px;
+            background: var(--success-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            animation: checkmarkBounce 0.8s ease 0.3s forwards;
+            transform: scale(0);
+        }
+        
+        .success-checkmark i {
+            font-size: 2.5rem;
+            color: var(--white);
+            animation: checkmarkIcon 0.6s ease 0.8s forwards;
+            opacity: 0;
+        }
+        
+        .success-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--success-green);
+            margin-bottom: 0.5rem;
+        }
+        
+        .success-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            margin-bottom: 2rem;
+        }
+        
+        .appointment-details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: var(--gray-50);
+            border-radius: 12px;
+            border-left: 4px solid var(--success-green);
+        }
+        
+        .detail-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease;
+        }
+        
+        .detail-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .detail-card-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+        
+        .detail-card-label {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .detail-card-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            line-height: 1.3;
+        }
+        
+        .meeting-info {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-light));
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .meeting-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .meeting-link {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            word-break: break-all;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .meeting-id {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        
+        .success-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .btn-success-primary,
+        .btn-success-secondary {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-success-primary {
+            background: var(--success-green);
+            color: var(--white);
+        }
+        
+        .btn-success-primary:hover {
+            background: #15803d;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-success-secondary {
+            background: var(--gray-200);
+            color: var(--gray-700);
+        }
+        
+        .btn-success-secondary:hover {
+            background: var(--gray-300);
+        }
+        
+        .success-footer {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--gray-200);
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        
+        .success-footer-highlight {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+        /* View Appointments Section */
+        
+        .view-appointments-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+        
+        .appointments-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .appointments-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .appointments-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .appointments-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .appointments-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .appointments-filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--gray-200);
+            background: var(--white);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: var(--gray-700);
+            font-size: 0.9rem;
+        }
+        
+        .appointments-filter-btn:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+        
+        .appointments-filter-btn.active {
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: var(--white);
+        }
+        
+        .appointments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .appointment-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .appointment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--feature-gradient);
+        }
+        
+        .appointment-card.pending::before {
+            background: var(--warning-yellow);
+        }
+        
+        .appointment-card.confirmed::before {
+            background: var(--success-green);
+        }
+        
+        .appointment-card.completed::before {
+            background: var(--primary-blue);
+        }
+        
+        .appointment-card.cancelled::before {
+            background: var(--error-red);
+        }
+        
+        .appointment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .appointment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .appointment-specialist {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .appointment-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--feature-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .appointment-specialist-info h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--gray-800);
+        }
+        
+        .appointment-specialist-role {
+            color: var(--primary-blue);
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+        
+        .appointment-status {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .appointment-status.pending {
+            background: rgba(234, 179, 8, 0.15);
+            color: var(--warning-yellow);
+        }
+        
+        .appointment-status.confirmed {
+            background: rgba(22, 163, 74, 0.15);
+            color: var(--success-green);
+        }
+        
+        .appointment-status.completed {
+            background: rgba(30, 64, 175, 0.15);
+            color: var(--primary-blue);
+        }
+        
+        .appointment-status.cancelled {
+            background: rgba(220, 38, 38, 0.15);
+            color: var(--error-red);
+        }
+        
+        .appointment-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .appointment-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: var(--gray-50);
+            border-radius: 8px;
+        }
+        
+        .appointment-detail-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+        
+        .appointment-detail-info {
+            flex: 1;
+        }
+        
+        .appointment-detail-label {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.25rem;
+        }
+        
+        .appointment-detail-value {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+        
+        .appointment-meeting-info {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-light));
+            color: var(--white);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+        }
+        
+        .appointment-meeting-info h5 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .appointment-meeting-link {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.5rem;
+            border-radius: 4px;
+            word-break: break-all;
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+        }
+        
+        .appointment-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        
+        .appointment-btn {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            min-width: 120px;
+        }
+        
+        .appointment-btn-primary {
+            background: var(--success-green);
+            color: var(--white);
+        }
+        
+        .appointment-btn-primary:hover {
+            background: #15803d;
+            transform: translateY(-1px);
+        }
+        
+        .appointment-btn-secondary {
+            background: var(--gray-200);
+            color: var(--gray-700);
+        }
+        
+        .appointment-btn-secondary:hover {
+            background: var(--gray-300);
+        }
+        
+        .appointment-btn-danger {
+            background: var(--error-red);
+            color: var(--white);
+        }
+        
+        .appointment-btn-danger:hover {
+            background: #b91c1c;
+            transform: translateY(-1px);
+        }
+        
+        .no-appointments {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--gray-500);
+        }
+        
+        .no-appointments i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+        
+        .no-appointments h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--gray-600);
+        }
+        
+        .no-appointments p {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .loading-appointments {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--gray-500);
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--gray-200);
+            border-top: 4px solid var(--primary-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        /* Animations */
+        
+        @keyframes successModalFadeIn {
+            from {
+                transform: translateY(30px) scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes checkmarkBounce {
+            0% {
+                transform: scale(0);
+            }
+            60% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes checkmarkIcon {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        /* Responsive Design for Success Modal */
+        
+        @media (max-width: 768px) {
+            .appointment-details-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 1.5rem;
+            }
+            .success-actions {
+                flex-direction: column;
+            }
+            .btn-success-primary,
+            .btn-success-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+            .success-modal-content {
+                padding: 2rem 1.5rem;
+            }
+            .success-title {
+                font-size: 1.5rem;
+            }
+        }
+        /* Responsive Design for View Appointments Section */
+        
+        @media (max-width: 768px) {
+            .appointments-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .appointment-details {
+                grid-template-columns: 1fr;
+            }
+            .appointment-actions {
+                flex-direction: column;
+            }
+            .appointment-btn {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section from index.html -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <h1>Brainbox</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="appointment.html" class="active">Appointment</a></li>
+                    <li><a href="index.html#resources">Resources</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <button class="mood-tracker-btn">
+                    <i class="fas fa-chart-line"></i><a href="Moodtracker.html">Track Your Mood</a>
+                </button>
+                <!-- Auth buttons container - will be hidden when logged in -->
+                <div class="auth-buttons-container" style="display: none;">
+                    <div class="auth-buttons">
+                        <button class="btn-secondary">Login</button>
+                        <button class="btn-primary">Register</button>
+                    </div>
+                </div>
+                <!-- User profile dropdown - initially hidden, shown when logged in -->
+                <div class="user-profile-dropdown" style="display: none;">
+                    <div class="profile-trigger" id="profile-trigger">
+                        <div class="avatar-circle" id="header-avatar">U</div>
+                        <span id="header-username">User</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="dropdown-menu" id="profile-dropdown">
+                        <a href="dashboard.html" class="dropdown-item">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                        <a href="admin-dashboard.html" class="dropdown-item">
+                            <i class="fa-solid fa-user"></i> Admin Panel
+                        </a>
+                        <a href="profile.html" class="dropdown-item">
+                            <i class="fas fa-user"></i> Profile
+                        </a>
+                        <a href="#settings" class="dropdown-item">
+                            <i class="fas fa-cog"></i> Settings
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" id="logout-btn" class="dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i> Sign Out
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Expert Mental Health Care When You Need It Most</h1>
+                <p class="subtitle">Connect with certified therapists and counselors through our secure platform. Get professional mental health support with easy online booking and personalized care plans.</p>
+
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <i class="fas fa-user-md"></i>
+                        <span>Licensed Professionals</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>100% Confidential</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-video"></i>
+                        <span>Online & In-Person</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-clock"></i>
+                        <span>24/7 Support Available</span>
+                    </div>
+                </div>
+
+                <button class="hero-cta" onclick="document.querySelector('.booking-section').scrollIntoView({behavior: 'smooth'})">
+                    <i class="fas fa-calendar-plus"></i>
+                    Book Appointment Now
+                </button>
+            </div>
+
+            <div class="hero-image">
+                <div class="hero-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Your Mental Wellness Matters</h3>
+                    <p>Professional care tailored to your unique needs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-number">10,000+</div>
+                    <div class="stat-label">Happy Patients</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Expert Therapists</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-number">25,000+</div>
+                    <div class="stat-label">Sessions Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-number">4.9/5</div>
+                    <div class="stat-label">Patient Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section">
+        <div class="appointment-container">
+            <div class="section-header">
+                <h2 class="section-title">Book Your Consultation</h2>
+                <p class="section-subtitle">Choose from our team of experienced mental health professionals and schedule your appointment at your convenience</p>
+            </div>
+
+            <div class="booking-flow">
+                <div class="specialist-section">
+                    <div class="filters">
+                        <button class="filter-btn active" data-filter="all">
+                            <i class="fas fa-th"></i> All Specialists
+                        </button>
+                        <button class="filter-btn" data-filter="stress">
+                            <i class="fas fa-brain"></i> Anxiety & Stress
+                        </button>
+                        <button class="filter-btn" data-filter="relationships">
+                            <i class="fas fa-heart"></i> Relationships
+                        </button>
+                        <button class="filter-btn" data-filter="depression">
+                            <i class="fas fa-sun"></i> Depression
+                        </button>
+                        <button class="filter-btn" data-filter="trauma">
+                            <i class="fas fa-hand-holding-heart"></i> Trauma Recovery
+                        </button>
+                    </div>
+
+                    <div class="specialists-grid" id="specialistsGrid">
+                        <!-- Dynamic content will be inserted here -->
+                    </div>
+                </div>
+
+                <div class="booking-sidebar">
+                    <div class="booking-header">
+                        <h3 class="booking-title">Book Your Session</h3>
+                        <p class="booking-subtitle">Select a specialist to continue</p>
+                    </div>
+
+                    <div class="selected-specialist" id="selectedSpecialist">
+                        <div class="selected-header">
+                            <div class="selected-avatar" id="selectedAvatar"></div>
+                            <div class="selected-info">
+                                <h4 id="selectedName"></h4>
+                                <div class="selected-role" id="selectedRole"></div>
+                            </div>
+                        </div>
+                        <div id="selectedTimeSlot" style="color: var(--gray-500); font-size: 0.85rem; text-align: center; margin-top: 0.75rem;">
+                            Select your preferred appointment time
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="fas fa-calendar-alt"></i> Select Date
+                        </label>
+                        <select class="form-select" id="datePicker">
+                            <option value="">Choose a date</option>
+                        </select>
+                    </div>
+
+                    <!-- Add Counseling Type Selection -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="fas fa-video"></i> Counseling Type
+                        </label>
+                        <select class="form-select" id="counselingType" required>
+                            <option value="">Select counseling type</option>
+                            <option value="video-call">Video Call</option>
+                            <option value="phone-call">Phone Call</option>
+                            <option value="in-office">In-Office Visit</option>
+                        </select>
+                    </div>
+
+                    <div class="time-slots-container">
+                        <div class="time-slots-title">
+                            <i class="fas fa-clock"></i> Available Time Slots
+                        </div>
+                        <div class="time-slots" id="timeSlots">
+                            <div style="text-align: center; color: var(--gray-400); padding: 2rem; font-style: italic; grid-column: 1 / -1;">
+                                <i class="fas fa-user-clock" style="font-size: 2rem; margin-bottom: 0.5rem; opacity: 0.5; display: block;"></i>
+                                <div style="font-size: 0.9rem;">Select a specialist to view available times</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="booking-summary">
+                        <div class="summary-title">
+                            <i class="fas fa-receipt"></i> Appointment Summary
+                        </div>
+                        <div class="summary-item">
+                            <span>Consultation Fee</span>
+                            <span class="summary-value">₹1,500</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Platform Fee</span>
+                            <span class="summary-value">₹0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Total Amount</span>
+                            <span class="summary-value">₹1,500</span>
+                        </div>
+                    </div>
+
+                    <button class="book-btn" id="bookBtn" disabled>
+                        <i class="fas fa-lock"></i>
+                        Complete Booking
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confirmation Modal -->
+    <div class="modal-overlay" id="confirmationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    <i class="fas fa-check-circle" style="color: var(--success-green); margin-right: 0.5rem;"></i> Confirm Appointment
+                </h2>
+                <button class="close-modal" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="confirmation-card">
+                    <div class="success-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Appointment Confirmed!</h3>
+                    <p>Your session has been successfully booked with our specialist.</p>
+
+                    <div class="confirmation-details" id="confirmationDetails">
+                        <!-- Dynamic content will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <form id="bookingForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Full Name *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Email Address *" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="tel" class="form-input" placeholder="Phone Number *" required>
+                    </div>
+
+                    <textarea class="form-textarea" placeholder="Tell us about your concerns (Optional)"></textarea>
+
+                    <div class="terms-group">
+                        <input type="checkbox" id="terms" class="terms-checkbox" required>
+                        <label for="terms" class="terms-text">
+                            I agree to Brainbox's <a href="#" class="terms-link">Terms of Service</a> and 
+                            <a href="#" class="terms-link">Privacy Policy</a>. I understand this is a confidential medical consultation.
+                        </label>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <span id="submitText">
+                            <i class="fas fa-credit-card"></i>
+                            Confirm & Pay ₹1,500
+                        </span>
+                        <span id="loadingSpinner" class="loading" style="display: none;"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Confirmation Modal -->
+    <div class="success-modal-overlay" id="successModal">
+        <div class="success-modal-content">
+            <div class="success-modal-header">
+                <div class="success-checkmark">
+                    <i class="fas fa-check"></i>
+                </div>
+                <h2 class="success-title">Session Confirmed!</h2>
+                <p class="success-subtitle">Your appointment has been successfully booked with our specialist.</p>
+            </div>
+
+            <div class="appointment-details-grid" id="successAppointmentDetails">
+                <!-- Dynamic content will be populated by JavaScript -->
+            </div>
+
+            <div class="meeting-info" id="successMeetingInfo" style="display: none;">
+                <!-- Dynamic meeting info will be populated by JavaScript -->
+            </div>
+
+            <div class="success-actions">
+                <button class="btn-success-primary" onclick="closeSuccessModal()">
+                    <i class="fas fa-calendar-check"></i>
+                    View My Appointments
+                </button>
+                <button class="btn-success-secondary" onclick="closeSuccessModal()">
+                    <i class="fas fa-times"></i>
+                    Close
+                </button>
+            </div>
+
+            <div class="success-footer">
+                <p>📧 A confirmation email with session details and preparation guide has been sent to your email address.</p>
+                <p class="success-footer-highlight">Please save your meeting details and join 5 minutes before the scheduled time.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Appointments Section -->
+    <section class="view-appointments-section">
+        <div class="appointments-container">
+            <div class="appointments-header">
+                <h2 class="appointments-title">My Appointments</h2>
+                <p class="appointments-subtitle">View and manage your scheduled mental health sessions</p>
+            </div>
+
+            <div class="appointments-filters">
+                <button class="appointments-filter-btn active" data-filter="all">
+                    <i class="fas fa-th"></i> All Appointments
+                </button>
+                <button class="appointments-filter-btn" data-filter="pending">
+                    <i class="fas fa-clock"></i> Pending
+                </button>
+                <button class="appointments-filter-btn" data-filter="confirmed">
+                    <i class="fas fa-check-circle"></i> Confirmed
+                </button>
+                <button class="appointments-filter-btn" data-filter="completed">
+                    <i class="fas fa-check-double"></i> Completed
+                </button>
+                <button class="appointments-filter-btn" data-filter="cancelled">
+                    <i class="fas fa-times-circle"></i> Cancelled
+                </button>
+            </div>
+
+            <div class="appointments-grid" id="appointmentsGrid">
+                <!-- Dynamic content will be inserted here -->
+                <div class="loading-appointments">
+                    <div class="loading-spinner"></div>
+                    <h3>Loading Appointments...</h3>
+                    <p>Please wait while we fetch your appointments</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Global variables - declared only once
+        let specialists = [];
+        let selectedSpecialist = null;
+        let selectedDate = null;
+        let selectedTime = null;
+        let selectedCounselingType = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchSpecialists();
+            setupEventListeners();
+            generateDates();
+            fetchAppointments(); // Add this line
+        });
+
+        // Fetch specialists from backend
+        async function fetchSpecialists() {
+            try {
+                console.log('Fetching specialists from backend...');
+                console.log('Backend URL: http://localhost:5001/api/admin/specialists');
+
+                const response = await fetch('http://localhost:5001/api/admin/specialists', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    mode: 'cors'
+                });
+
+                console.log('Response status:', response.status);
+                console.log('Response ok:', response.ok);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log('Response data:', data);
+
+                if (data.success && data.specialists) {
+                    specialists = data.specialists;
+                    console.log('Specialists loaded:', specialists.length);
+                    populateSpecialists();
+                } else {
+                    console.error('Failed to fetch specialists:', data.message);
+                    showFallbackSpecialists();
+                }
+            } catch (error) {
+                console.error('Error fetching specialists:', error);
+                showFallbackSpecialists();
+            }
+        }
+
+        // Enhanced fallback function with better sample data
+        function showFallbackSpecialists() {
+            console.log('Using fallback specialists data');
+            specialists = [{
+                id: 1,
+                name: ' Sarah Williams',
+                role: 'Licensed Counselor',
+                specialty: 'Anxiety & Stress Management',
+                avatar: 'SW',
+                experience: 8,
+                bio: 'Specialized in cognitive behavioral therapy with focus on anxiety disorders and stress management techniques.',
+                languages: 'English, Hindi',
+                rating: 4.8,
+                reviews: 124,
+                availability: generateWeeklyAvailability(1)
+            }, {
+                id: 2,
+                name: ' Michael Chen',
+                role: 'Clinical Therapist',
+                specialty: 'Depression & Mood Disorders',
+                avatar: 'MC',
+                experience: 12,
+                bio: 'Expert in treating depression and mood disorders using evidence-based therapeutic approaches.',
+                languages: 'English, Mandarin',
+                rating: 4.9,
+                reviews: 198,
+                availability: generateWeeklyAvailability(2)
+            }, {
+                id: 3,
+                name: ' Priya Sharma',
+                role: 'Licensed Counselor',
+                specialty: 'Relationship Counseling',
+                avatar: 'PS',
+                experience: 6,
+                bio: 'Specialized in couples therapy and relationship counseling with a holistic approach.',
+                languages: 'English, Hindi, Gujarati',
+                rating: 4.7,
+                reviews: 89,
+                availability: generateWeeklyAvailability(3)
+            }];
+            populateSpecialists();
+        }
+
+        function populateSpecialists() {
+            const grid = document.getElementById('specialistsGrid');
+
+            if (specialists.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--gray-500);">
+                        <i class="fas fa-user-md" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                        <h3>No Specialists Available</h3>
+                        <p>Please check back later or contact support.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = specialists.map((specialist, index) => {
+                const availableSlots = specialist.availability ?
+                    Object.values(specialist.availability).reduce((acc, day) =>
+                        acc + day.filter(slot => slot.available).length, 0
+                    ) : 0;
+
+                // Create specialty filter attribute
+                const specialtyFilter = specialist.specialty.toLowerCase()
+                    .replace(/ & /g, ' ')
+                    .replace(/\s+/g, '-')
+                    .replace(/[^a-z\-]/g, '');
+
+                return `
+                    <div class="specialist-card" data-id="${specialist.id}" data-specialty="${specialtyFilter}">
+                        <div class="specialist-header">
+                            <div class="avatar">${specialist.avatar}</div>
+                            <div class="specialist-info">
+                                <h3>Dr. ${specialist.name}</h3>
+                                <div class="specialist-role">
+                                    <i class="fas fa-user-md"></i>
+                                    ${specialist.role}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="specialist-specialty">${specialist.specialty}</div>
+                        <p class="specialist-bio">${specialist.bio}</p>
+                        <div class="specialist-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">${specialist.experience}+</div>
+                                <div class="stat-label">Years Exp</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">${specialist.rating}</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">${specialist.reviews}</div>
+                                <div class="stat-label">Reviews</div>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 1rem; padding: 0.75rem; background: var(--gray-50); border-radius: 8px;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                <i class="fas fa-globe" style="color: var(--primary-blue); font-size: 0.9rem;"></i>
+                                <span style="font-weight: 600; color: var(--gray-700); font-size: 0.85rem;">Languages:</span>
+                            </div>
+                            <div style="color: var(--gray-600); font-size: 0.85rem;">${specialist.languages}</div>
+                        </div>
+                        <div class="availability-badge">
+                            <i class="fas fa-calendar-check"></i>
+                            ${availableSlots} slots available this week
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function generateWeeklyAvailability(specialistId) {
+            const availability = {};
+            const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const baseDate = new Date();
+            baseDate.setDate(baseDate.getDate() + 1);
+
+            days.forEach((day, index) => {
+                const date = new Date(baseDate);
+                date.setDate(baseDate.getDate() + index);
+                const dateKey = date.toISOString().split('T')[0];
+
+                const slots = [
+                    '09:00 AM', '10:30 AM', '12:00 PM', '02:00 PM',
+                    '03:30 PM', '05:00 PM', '06:30 PM'
+                ];
+
+                availability[dateKey] = slots.map(slot => ({
+                    time: slot,
+                    date: dateKey,
+                    day: day,
+                    available: Math.random() > 0.25
+                }));
+            });
+
+            return availability;
+        }
+
+        function setupEventListeners() {
+            // Filter functionality
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const filter = this.dataset.filter;
+                    filterSpecialists(filter);
+                });
+            });
+
+            // Specialist selection
+            document.getElementById('specialistsGrid').addEventListener('click', function(e) {
+                if (e.target.closest('.specialist-card')) {
+                    const card = e.target.closest('.specialist-card');
+                    const specialistId = parseInt(card.dataset.id);
+
+                    document.querySelectorAll('.specialist-card').forEach(c => c.classList.remove('selected'));
+                    card.classList.add('selected');
+
+                    selectedSpecialist = specialists.find(s => s.id === specialistId);
+                    updateBookingSidebar();
+                    updateTimeSlots();
+                }
+            });
+
+            // Date selection
+            document.getElementById('datePicker').addEventListener('change', function(e) {
+                selectedDate = e.target.value;
+                selectedTime = null;
+                updateTimeSlots();
+                updateBookingSummary();
+            });
+
+            // Counseling type selection
+            document.getElementById('counselingType').addEventListener('change', function(e) {
+                selectedCounselingType = e.target.value;
+                updateBookingSummary();
+            });
+
+            // Time slot selection
+            document.getElementById('timeSlots').addEventListener('click', function(e) {
+                if (e.target.classList.contains('time-slot') && e.target.classList.contains('available')) {
+                    document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
+                    e.target.classList.add('selected');
+                    selectedTime = e.target.dataset.time;
+                    updateBookingSummary();
+                }
+            });
+
+            // Book button
+            document.getElementById('bookBtn').addEventListener('click', showConfirmationModal);
+
+            // Modal interactions
+            document.getElementById('closeModal').addEventListener('click', closeModal);
+            document.getElementById('confirmationModal').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+
+            document.getElementById('bookingForm').addEventListener('submit', handleBooking);
+        }
+
+        function filterSpecialists(filter) {
+            const cards = document.querySelectorAll('.specialist-card');
+            cards.forEach((card, index) => {
+                const specialty = card.dataset.specialty;
+                if (filter === 'all' || specialty.includes(filter)) {
+                    setTimeout(() => {
+                        card.style.display = 'block';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, index * 100);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => card.style.display = 'none', 300);
+                }
+            });
+        }
+
+        function generateDates() {
+            const datePicker = document.getElementById('datePicker');
+            const today = new Date();
+
+            // Add next 7 days
+            for (let i = 1; i <= 7; i++) {
+                const date = new Date(today);
+                date.setDate(today.getDate() + i);
+                const dateString = date.toISOString().split('T')[0];
+                const dateDisplay = date.toLocaleDateString('en-US', {
+                    weekday: 'short',
+                    month: 'short',
+                    day: 'numeric'
+                });
+
+                const option = document.createElement('option');
+                option.value = dateString;
+                option.textContent = dateDisplay;
+                datePicker.appendChild(option);
+            }
+        }
+
+        function updateBookingSidebar() {
+            const selectedDiv = document.getElementById('selectedSpecialist');
+            if (selectedSpecialist) {
+                selectedDiv.classList.add('show');
+                document.getElementById('selectedAvatar').textContent = selectedSpecialist.avatar;
+                document.getElementById('selectedName').textContent = selectedSpecialist.name;
+                document.getElementById('selectedRole').innerHTML = `
+                    <i class="fas fa-stethoscope" style="color: var(--primary-blue);"></i>
+                    ${selectedSpecialist.role}
+                `;
+                document.getElementById('bookBtn').disabled = false;
+            } else {
+                selectedDiv.classList.remove('show');
+                document.getElementById('bookBtn').disabled = true;
+            }
+        }
+
+        function updateTimeSlots() {
+            const timeSlotsContainer = document.getElementById('timeSlots');
+            const datePickerValue = document.getElementById('datePicker').value;
+
+            if (!selectedSpecialist || !datePickerValue) {
+                timeSlotsContainer.innerHTML = `
+                    <div style="text-align: center; color: var(--gray-400); padding: 2.5rem; font-style: italic;">
+                        <i class="fas fa-user-clock" style="font-size: 2rem; margin-bottom: 0.5rem; opacity: 0.5; display: block;"></i>
+                        <div style="font-size: 0.9rem;">Select a specialist to view available times</div>
+                    </div>
+                `;
+                return;
+            }
+
+            const daySlots = selectedSpecialist.availability[datePickerValue] || [];
+            timeSlotsContainer.innerHTML = daySlots.map((slot, index) => {
+                const isSelected = selectedTime === slot.time;
+                let classes = 'time-slot';
+                if (!slot.available) classes += ' booked';
+                else classes += ' available';
+                if (isSelected) classes += ' selected';
+
+                return `
+                    <button class="${classes}" data-time="${slot.time}" ${!slot.available ? 'disabled' : ''}
+                            style="animation-delay: ${index * 0.1}s;">
+                        ${slot.time}
+                    </button>
+                `;
+            }).join('');
+
+            if (daySlots.length === 0) {
+                timeSlotsContainer.innerHTML = `
+                    <div style="text-align: center; color: var(--gray-400); padding: 2.5rem;">
+                        <i class="fas fa-calendar-times" style="font-size: 2rem; margin-bottom: 0.5rem; opacity: 0.5; display: block;"></i>
+                        <div style="font-size: 0.9rem;">No Availability</div>
+                        <div style="font-size: 0.8rem; opacity: 0.8;">Please select another date</div>
+                    </div>
+                `;
+            }
+        }
+
+        function updateBookingSummary() {
+            const timeDisplay = document.getElementById('selectedTimeSlot');
+            const bookBtn = document.getElementById('bookBtn');
+
+            if (selectedSpecialist && selectedDate && selectedTime && selectedCounselingType) {
+                const dateObj = new Date(selectedDate);
+                const dateName = dateObj.toLocaleDateString('en-US', {
+                    weekday: 'short'
+                });
+                timeDisplay.innerHTML = `
+                    <i class="fas fa-check-circle" style="color: var(--success-green); margin-right: 0.5rem;"></i>
+                    ${selectedTime} • ${dateName} • ${getCounselingTypeLabel(selectedCounselingType)}
+                `;
+                bookBtn.innerHTML = `
+                    <i class="fas fa-lock"></i>
+                    Confirm Session - ₹1,500
+                `;
+                bookBtn.disabled = false;
+            } else {
+                timeDisplay.innerHTML = `
+                    <i class="fas fa-clock" style="color: var(--gray-400); margin-right: 0.5rem;"></i>
+                    Select your preferred time and type
+                `;
+                bookBtn.innerHTML = `
+                    <i class="fas fa-calendar-plus"></i>
+                    Choose Your Slot
+                `;
+                bookBtn.disabled = true;
+            }
+        }
+
+        function getCounselingTypeLabel(type) {
+            const types = {
+                'video-call': 'Video Call',
+                'phone-call': 'Phone Call',
+                'in-office': 'In-Office'
+            };
+            return types[type] || type;
+        }
+
+        function showConfirmationModal() {
+            if (selectedSpecialist && selectedDate && selectedTime && selectedCounselingType) {
+                const modal = document.getElementById('confirmationModal');
+                const detailsContainer = document.getElementById('confirmationDetails');
+
+                const dateObj = new Date(selectedDate);
+                const formattedDate = dateObj.toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+
+                detailsContainer.innerHTML = `
+                    <div class="detail-item">
+                        <div class="detail-icon"><i class="fas fa-user-md"></i></div>
+                        <div class="detail-value">${selectedSpecialist.name}</div>
+                        <div class="detail-label">${selectedSpecialist.role}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon"><i class="fas fa-calendar-day"></i></div>
+                        <div class="detail-value">${formattedDate}</div>
+                        <div class="detail-label">Session Date</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon"><i class="fas fa-clock"></i></div>
+                        <div class="detail-value">${selectedTime}</div>
+                        <div class="detail-label">Duration: 60 min</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon"><i class="fas fa-video"></i></div>
+                        <div class="detail-value">${getCounselingTypeLabel(selectedCounselingType)}</div>
+                        <div class="detail-label">Session Type</div>
+                    </div>
+                `;
+
+                // Clear previous form data
+                document.querySelector('input[type="text"]').value = '';
+                document.querySelector('input[type="email"]').value = '';
+                document.querySelector('input[type="tel"]').value = '';
+                document.querySelector('textarea').value = '';
+                document.getElementById('terms').checked = false;
+
+                modal.style.display = 'flex';
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('confirmationModal').style.display = 'none';
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('successModal').style.display = 'none';
+        }
+
+        function showSuccessModal(appointmentData) {
+            const modal = document.getElementById('successModal');
+            const detailsContainer = document.getElementById('successAppointmentDetails');
+            const meetingInfoContainer = document.getElementById('successMeetingInfo');
+
+            const formattedDate = new Date(appointmentData.appointmentDate).toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            // Populate appointment details
+            detailsContainer.innerHTML = `
+                <div class="detail-card">
+                    <div class="detail-card-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div class="detail-card-label">Specialist</div>
+                    <div class="detail-card-value">Dr. ${appointmentData.specialistName}</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-card-icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="detail-card-label">Date</div>
+                    <div class="detail-card-value">${formattedDate}</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-card-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="detail-card-label">Time</div>
+                    <div class="detail-card-value">${appointmentData.appointmentTime}</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-card-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="detail-card-label">Session Type</div>
+                    <div class="detail-card-value">${getCounselingTypeLabel(appointmentData.counselingType)}</div>
+                </div>
+            `;
+
+            // Show meeting info for online sessions
+            if (appointmentData.meetingLink || appointmentData.meetingId) {
+                meetingInfoContainer.style.display = 'block';
+                let meetingContent = `
+                    <h4>
+                        <i class="fas fa-video"></i>
+                        Meeting Information
+                    </h4>
+                `;
+
+                if (appointmentData.meetingLink) {
+                    meetingContent += `
+                        <div>
+                            <strong>Meeting Link:</strong>
+                            <div class="meeting-link">${appointmentData.meetingLink}</div>
+                        </div>
+                    `;
+                }
+
+                if (appointmentData.meetingId) {
+                    meetingContent += `
+                        <div class="meeting-id">
+                            <strong>Meeting ID:</strong> ${appointmentData.meetingId}
+                        </div>
+                    `;
+                }
+
+                meetingInfoContainer.innerHTML = meetingContent;
+            } else {
+                meetingInfoContainer.style.display = 'none';
+            }
+
+            modal.style.display = 'flex';
+        }
+
+        async function handleBooking(e) {
+            e.preventDefault();
+
+            const submitText = document.getElementById('submitText');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+
+            // Show loading
+            submitText.style.display = 'none';
+            loadingSpinner.style.display = 'inline-block';
+
+            // Get form data
+            const formData = {
+                patientName: document.querySelector('input[type="text"]').value,
+                patientEmail: document.querySelector('input[type="email"]').value,
+                patientPhone: document.querySelector('input[type="tel"]').value,
+                concerns: document.querySelector('textarea').value,
+                specialistId: selectedSpecialist.id.toString(),
+                specialistName: selectedSpecialist.name,
+                specialistRole: selectedSpecialist.role,
+                specialistSpecialty: selectedSpecialist.specialty,
+                appointmentDate: selectedDate,
+                appointmentTime: selectedTime,
+                counselingType: selectedCounselingType,
+                consultationFee: 1500,
+                platformFee: 0,
+                totalAmount: 1500
+            };
+
+            try {
+                console.log('Booking appointment with data:', formData);
+
+                const response = await fetch('http://localhost:5001/api/appointments/book', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+                console.log('Booking response:', result);
+
+                if (result.success) {
+                    // Close the booking modal
+                    closeModal();
+
+                    // Show the success modal with appointment data
+                    showSuccessModal(result.appointment);
+
+                    // Reset the booking form
+                    resetBooking();
+                } else {
+                    alert('❌ Booking failed: ' + result.message);
+                }
+
+            } catch (error) {
+                console.error('Error booking appointment:', error);
+                alert('❌ Booking failed: ' + error.message);
+            } finally {
+                // Reset loading
+                submitText.style.display = 'inline';
+                loadingSpinner.style.display = 'none';
+            }
+        }
+
+        // Fetch appointments from backend
+        async function fetchAppointments() {
+            try {
+                console.log('Fetching appointments from backend...');
+
+                const response = await fetch('http://localhost:5001/api/appointments/all', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    mode: 'cors'
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log('Appointments response:', data);
+
+                if (data.success && data.appointments) {
+                    console.log('Appointments loaded:', data.appointments.length);
+                    populateAppointments(data.appointments);
+                } else {
+                    console.error('Failed to fetch appointments:', data.message);
+                    showNoAppointments();
+                }
+            } catch (error) {
+                console.error('Error fetching appointments:', error);
+                showNoAppointments();
+            }
+        }
+
+        // Populate appointments grid
+        function populateAppointments(appointments) {
+            const grid = document.getElementById('appointmentsGrid');
+
+            if (appointments.length === 0) {
+                showNoAppointments();
+                return;
+            }
+
+            grid.innerHTML = appointments.map(appointment => {
+                        const appointmentDate = new Date(appointment.appointmentDate);
+                        const formattedDate = appointmentDate.toLocaleDateString('en-US', {
+                            weekday: 'short',
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric'
+                        });
+
+                        const isUpcoming = new Date() < appointmentDate;
+                        const canJoin = appointment.status === 'confirmed' && isUpcoming &&
+                            appointment.counselingType !== 'in-office';
+                        const canCancel = appointment.status === 'pending' ||
+                            (appointment.status === 'confirmed' && isUpcoming);
+
+                        return `
+                    <div class="appointment-card ${appointment.status}" data-status="${appointment.status}">
+                        <div class="appointment-header">
+                            <div class="appointment-specialist">
+                                <div class="appointment-avatar">
+                                    ${appointment.specialistName.split(' ').map(n => n[0]).join('').substring(0, 2)}
+                                </div>
+                                <div class="appointment-specialist-info">
+                                    <h4>Dr. ${appointment.specialistName}</h4>
+                                    <div class="appointment-specialist-role">${appointment.specialistRole}</div>
+                                </div>
+                            </div>
+                            <div class="appointment-status ${appointment.status}">
+                                ${appointment.status}
+                            </div>
+                        </div>
+
+                        <div class="appointment-details">
+                            <div class="appointment-detail">
+                                <div class="appointment-detail-icon">
+                                    <i class="fas fa-calendar-day"></i>
+                                </div>
+                                <div class="appointment-detail-info">
+                                    <div class="appointment-detail-label">Date</div>
+                                    <div class="appointment-detail-value">${formattedDate}</div>
+                                </div>
+                            </div>
+                            <div class="appointment-detail">
+                                <div class="appointment-detail-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="appointment-detail-info">
+                                    <div class="appointment-detail-label">Time</div>
+                                    <div class="appointment-detail-value">${appointment.appointmentTime}</div>
+                                </div>
+                            </div>
+                            <div class="appointment-detail">
+                                <div class="appointment-detail-icon">
+                                    <i class="fas fa-video"></i>
+                                </div>
+                                <div class="appointment-detail-info">
+                                    <div class="appointment-detail-label">Type</div>
+                                    <div class="appointment-detail-value">${getCounselingTypeLabel(appointment.counselingType)}</div>
+                                </div>
+                            </div>
+                            <div class="appointment-detail">
+                                <div class="appointment-detail-icon">
+                                    <i class="fas fa-rupee-sign"></i>
+                                </div>
+                                <div class="appointment-detail-info">
+                                    <div class="appointment-detail-label">Amount</div>
+                                    <div class="appointment-detail-value">₹${appointment.totalAmount}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        ${appointment.meetingLink || appointment.meetingId ? `
+                            <div class="appointment-meeting-info">
+                                <h5><i class="fas fa-video"></i> Meeting Information</h5>
+                                ${appointment.meetingLink ? `
+                                    <div>Meeting Link:</div>
+                                    <div class="appointment-meeting-link">${appointment.meetingLink}</div>
+                                ` : ''}
+                                ${appointment.meetingId ? `
+                                    <div style="margin-top: 0.5rem;"><strong>Meeting ID:</strong> ${appointment.meetingId}</div>
+                                ` : ''}
+                            </div>
+                        ` : ''}
+
+                        <div class="appointment-actions">
+                            ${canJoin ? `
+                                <button class="appointment-btn appointment-btn-primary" onclick="joinMeeting('${appointment.meetingLink}')">
+                                    <i class="fas fa-video"></i> Join Session
+                                </button>
+                            ` : ''}
+                            
+                            ${appointment.status === 'confirmed' && appointment.counselingType === 'in-office' ? `
+                                <button class="appointment-btn appointment-btn-secondary" onclick="viewDirections()">
+                                    <i class="fas fa-map-marker-alt"></i> Get Directions
+                                </button>
+                            ` : ''}
+                            
+                            <button class="appointment-btn appointment-btn-secondary" onclick="viewAppointmentDetails('${appointment._id}')">
+                                <i class="fas fa-eye"></i> View Details
+                            </button>
+                            
+                            ${canCancel ? `
+                                <button class="appointment-btn appointment-btn-danger" onclick="cancelAppointment('${appointment._id}')">
+                                    <i class="fas fa-times"></i> Cancel
+                                </button>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Setup filter functionality
+            setupAppointmentFilters();
+        }
+
+        // Show no appointments message
+        function showNoAppointments() {
+            const grid = document.getElementById('appointmentsGrid');
+            grid.innerHTML = `
+                <div class="no-appointments">
+                    <i class="fas fa-calendar-times"></i>
+                    <h3>No Appointments Found</h3>
+                    <p>You haven't booked any appointments yet. Schedule your first session with our mental health professionals.</p>
+                    <button class="btn-primary" onclick="document.querySelector('.booking-section').scrollIntoView({behavior: 'smooth'})">
+                        <i class="fas fa-calendar-plus"></i> Book Appointment
+                    </button>
+                </div>
+            `;
+        }
+
+        // Setup appointment filter functionality
+        function setupAppointmentFilters() {
+            document.querySelectorAll('.appointments-filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.appointments-filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.dataset.filter;
+                    filterAppointments(filter);
+                });
+            });
+        }
+
+        // Filter appointments by status
+        function filterAppointments(filter) {
+            const cards = document.querySelectorAll('.appointment-card');
+            cards.forEach((card, index) => {
+                const status = card.dataset.status;
+                if (filter === 'all' || status === filter) {
+                    setTimeout(() => {
+                        card.style.display = 'block';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, index * 100);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => card.style.display = 'none', 300);
+                }
+            });
+        }
+
+        // Join meeting function
+        function joinMeeting(meetingLink) {
+            if (meetingLink) {
+                window.open(meetingLink, '_blank');
+            } else {
+                alert('Meeting link not available yet. Please check back closer to your appointment time.');
+            }
+        }
+
+        // View directions function
+        function viewDirections() {
+            const address = "MindSpace Center, Main Branch";
+            const googleMapsUrl = `https://www.google.com/maps/search/${encodeURIComponent(address)}`;
+            window.open(googleMapsUrl, '_blank');
+        }
+
+        // View appointment details function
+        function viewAppointmentDetails(appointmentId) {
+            alert(`Viewing details for appointment: ${appointmentId}`);
+            // This could open a detailed modal or navigate to a detail page
+        }
+
+        // Cancel appointment function
+        async function cancelAppointment(appointmentId) {
+            if (confirm('Are you sure you want to cancel this appointment?')) {
+                try {
+                    const response = await fetch(`http://localhost:5001/api/appointments/${appointmentId}/status`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ status: 'cancelled' })
+                    });
+
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        alert('✅ Appointment cancelled successfully');
+                        fetchAppointments(); // Refresh the appointments list
+                    } else {
+                        alert('❌ Failed to cancel appointment: ' + result.message);
+                    }
+                } catch (error) {
+                    console.error('Error cancelling appointment:', error);
+                    alert('❌ Failed to cancel appointment');
+                }
+            }
+        }
+
+        // ADD: Reset booking state and UI after successful booking
+        function resetBooking() {
+            // Reset selections
+            selectedSpecialist = null;
+            selectedDate = null;
+            selectedTime = null;
+            selectedCounselingType = null;
+
+            // Clear selected cards
+            document.querySelectorAll('.specialist-card').forEach(c => c.classList.remove('selected'));
+
+            // Hide selected specialist panel
+            const selectedDiv = document.getElementById('selectedSpecialist');
+            if (selectedDiv) selectedDiv.classList.remove('show');
+
+            // Reset selects
+            const datePicker = document.getElementById('datePicker');
+            if (datePicker) datePicker.value = '';
+            const counselingType = document.getElementById('counselingType');
+            if (counselingType) counselingType.value = '';
+
+            // Restore time slots placeholder
+            const timeSlotsContainer = document.getElementById('timeSlots');
+            if (timeSlotsContainer) {
+                timeSlotsContainer.innerHTML = `
+                    <div style="text-align: center; color: var(--gray-400); padding: 2rem; font-style: italic; grid-column: 1 / -1;">
+                        <i class="fas fa-user-clock" style="font-size: 2rem; margin-bottom: 0.5rem; opacity: 0.5; display: block;"></i>
+                        <div style="font-size: 0.9rem;">Select a specialist to view available times</div>
+                    </div>
+                `;
+            }
+
+            // Update sidebar and summary buttons
+            if (typeof updateBookingSidebar === 'function') updateBookingSidebar();
+            if (typeof updateBookingSummary === 'function') updateBookingSummary();
+
+            // Refresh appointments list to include the newly booked one
+            if (typeof fetchAppointments === 'function') fetchAppointments();
+        }
+    </script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

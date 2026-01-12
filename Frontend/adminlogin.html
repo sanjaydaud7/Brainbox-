@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Wellness Platform | Authentication</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            display: flex;
+            max-width: 950px;
+            width: 100%;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s ease;
+        }
+        
+        .container:hover {
+            transform: translateY(-5px);
+        }
+        
+        .welcome-section {
+            flex: 1;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .welcome-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .welcome-section::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .welcome-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .welcome-section p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+            max-width: 300px;
+        }
+        
+        .illustration {
+            margin: 30px 0;
+            font-size: 5.5rem;
+            color: rgba(255, 255, 255, 0.95);
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .form-section {
+            flex: 1;
+            padding: 50px;
+            background: #fff;
+        }
+        
+        .form-container {
+            width: 100%;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 35px;
+            border-bottom: 2px solid #f1f1f1;
+        }
+        
+        .tab {
+            padding: 14px 25px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #888;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .tab.active {
+            color: #667eea;
+            position: relative;
+            left: 35%;
+            font-size: 1.3em;
+        }
+        
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 3px;
+        }
+        
+        .form {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .form.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 22px;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #555;
+            font-size: 15px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #eaeaea;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+            background: #fafafa;
+        }
+        
+        .form-group input:focus {
+            border-color: #667eea;
+            outline: none;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .password-input {
+            position: relative;
+        }
+        
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #777;
+            transition: color 0.3s;
+        }
+        
+        .toggle-password:hover {
+            color: #667eea;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn:hover {
+            opacity: 0.95;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #777;
+            font-size: 15px;
+        }
+        
+        .form-footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="welcome-section">
+            <div class="illustration">
+                <i class="fas fa-brain"></i>
+            </div>
+            <h1>Welcome to Brainbox</h1>
+            <p>Your journey to mental wellness begins here. Connect with certified counselors and therapists who can help you navigate life's challenges.</p>
+        </div>
+
+        <div class="form-section">
+            <div class="form-container">
+                <div class="tabs">
+                    <div class="tab active" data-tab="login">Login</div>
+                </div>
+
+                <form id="login-form" class="form active">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="login-password" placeholder="Enter your password" required>
+                            <span class="toggle-password" id="toggle-login-password">
+                                <i class="far fa-eye"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = "http://localhost:5001/api/admin"; // backend
+
+        // Password toggle
+        document.querySelector("#toggle-login-password").addEventListener("click", function() {
+            const input = document.querySelector("#login-password");
+            const icon = this.querySelector("i");
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.replace("fa-eye", "fa-eye-slash");
+            } else {
+                input.type = "password";
+                icon.classList.replace("fa-eye-slash", "fa-eye");
+            }
+        });
+
+        // Login submit
+        document.getElementById("login-form").addEventListener("submit", async function(e) {
+            e.preventDefault();
+            const email = document.getElementById("login-email").value;
+            const password = document.getElementById("login-password").value;
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/login`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        email,
+                        password
+                    })
+                });
+                const data = await res.json();
+                if (res.ok && ["admin", "counselor", "therapist"].includes(data.admin.role)) {
+                    // Calculate full name
+                    const fullName = `${data.admin.firstName} ${data.admin.lastName}`.trim();
+
+                    // Store token and user info in localStorage
+                    localStorage.setItem("adminToken", data.token);
+                    localStorage.setItem("userInfo", JSON.stringify({
+                        id: data.admin.id,
+                        firstName: data.admin.firstName,
+                        lastName: data.admin.lastName,
+                        fullName: fullName,
+                        email: data.admin.email,
+                        mobile: data.admin.mobile,
+                        role: data.admin.role
+                    }));
+                    window.location.href = "admin-dashboard.html";
+                } else {
+                    alert(data.message || "You do not have permission to access the dashboard");
+                }
+            } catch (err) {
+                console.error(err);
+                alert("Login failed. Try again.");
+            }
+        });
+    </script>
+</body>
+
+</html>
